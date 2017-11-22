@@ -10,7 +10,7 @@
 ### 本文要实现的效果
 用express返回一段数据，用axios请求这段数据，然后用vue渲染出来，用vue-router切换页面
 
-![效果预览]()
+![效果预览](https://github.com/hekui-github/easy_vue/blob/master/%E8%BD%BB%E8%BD%BB%E6%9D%BE%E6%9D%BE%E4%B8%8A%E6%89%8Bvue%E3%80%81vue-router%E3%80%81axios/shotcut.png)
 
 ### 代码解释
 首先在用express返回一个食物列表，然后在vue的mounted方法获取到数据，在注册3个组件，用vue-router进行切换，并把获取到的数据传入到home这个组件中去.本文把vue、vue-router、axios、express用最简单的方式结合在一起，大家能搞懂他们的基本用法就好。
@@ -150,6 +150,7 @@ app.get('/foodlist', function(req, res) {
 app.listen(8000)
 ```
 > http://localhost:8000/index.html 会正常显示index.html
+> 
 > http://localhost:8000/foodlist 会返回foodlist这个数组
 
 ## axios
