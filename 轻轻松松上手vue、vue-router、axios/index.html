@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>vue-demo1</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+
+    .list {
+        width: 450px;
+        margin: 100px auto;
+    }
+
+    .list li {
+        height: 50px;
+        line-height: 50px;
+        background-color: #dee;
+    }
+
+    .list span {
+        display: inline-block;
+    }
+
+    .list .name {
+        padding-left: 30px;
+        text-align: left;
+        width: 150px;
+    }
+
+    .list img {
+        width: 40px;
+        height: 40px;
+        margin-left: 100px;
+        vertical-align: middle;
+    }
+
+    .list .price {
+        width: 100px;
+        text-align: center;
+    }
+
+    li.bgActive {
+        background-color: #eed;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="list">
+        <food-list :foodlist="foodList"></food-list>
+    </div>
+    <script>
+    Vue.component('foodList', {
+        template: `
+                        <ul class="list">
+                            <li v-for="(item,index) in foodlist" :class="{bgActive:index % 2 != 1}">
+                                <span v-text="item.name" class="name"></span>
+                                <span class="price">30</span>
+                                <img :src="imgSrc(item)" alt="" @click="shouchangClick(item)">
+                            </li>
+                        </ul>
+                    `,
+        props: ['foodlist'],
+        methods: {
+            imgSrc: function(item) {
+                if (item.isSelect) {
+                    return './img/shouchang_fill.png'
+
+                } else {
+                    return './img/shouchang.png'
+
+                }
+            },
+            shouchangClick: function(item) {
+                item.isSelect = !item.isSelect
+            }
+        },
+    });
+    var foodList = [{ name: '香菇青菜', isSelect: false }, { name: '冬瓜排骨', isSelect: false }, { name: '青椒肉丝', isSelect: false }, { name: '爆炒虾仁', isSelect: false }, { name: '红烧茄子', isSelect: false }]
+    new Vue({
+        el: list,
+        data: {
+            foodList
+        }
+    })
+    </script>
+</body>
+
+</html>
